@@ -1,0 +1,6 @@
+# IDE (GoLand, VSCode)
+.idea/
+.vscode/
+
+# Cache
+.cache/
