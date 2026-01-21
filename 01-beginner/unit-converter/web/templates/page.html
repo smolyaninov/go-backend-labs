@@ -1,0 +1,50 @@
+{{define "content"}}
+<form method="post" action="{{.Action}}">
+    <div class="row">
+        <div>
+            <label for="value">Value</label>
+            <input id="value" name="value" inputmode="decimal" value="{{.Value}}" required>
+        </div>
+
+        <div>
+            <label for="from">From</label>
+            <select id="from" name="from">
+                {{range .Units}}
+                <option value="{{.Key}}" {{if eq $.From .Key}}selected{{end}}>{{.Label}}</option>
+                {{end}}
+            </select>
+        </div>
+
+        <div>
+            <label for="to">To</label>
+            <select id="to" name="to">
+                {{range .Units}}
+                <option value="{{.Key}}" {{if eq $.To .Key}}selected{{end}}>{{.Label}}</option>
+                {{end}}
+            </select>
+        </div>
+
+        <div>
+            <button type="submit">Convert</button>
+        </div>
+    </div>
+
+    {{if .Hint}}
+    <div class="hint">{{.Hint}}</div>
+    {{end}}
+
+    {{if .Error}}
+    <div class="error">{{.Error}}</div>
+    {{end}}
+
+    {{if .HasResult}}
+    <div class="result">
+        Result: {{.Result}}
+    </div>
+    {{end}}
+</form>
+{{end}}
+
+{{define "page"}}
+{{template "layout" .}}
+{{end}}
